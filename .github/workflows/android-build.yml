@@ -1,0 +1,16 @@
+name: SIGRA Android Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download project
+        uses: actions/checkout@v4
+
+      - name: Build information
+        run: |
+          echo "SIGRA Battle Royale project is ready"
+          ls -la
