@@ -1,4 +1,4 @@
-name: SIGRA Android Build
+name: name: SIGRA Android Build
 
 on:
   workflow_dispatch:
