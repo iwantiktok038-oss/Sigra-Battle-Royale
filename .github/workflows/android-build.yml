@@ -1,5 +1,4 @@
-
-name: SIGRA Android Build
+name: SIGRA Android APK
 
 "on":
   workflow_dispatch:
@@ -10,9 +9,16 @@ name: SIGRA Android Build
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
 
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v2
@@ -20,6 +26,9 @@ jobs:
           version: 4.3.0
           use-dotnet: false
 
-      - name: Check Godot project
-        run: godot --headless --editor --path . --quit
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v3
 
+      - name: Check project
+        run: godot --headless --editor --path . --quit
+      
